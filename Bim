@@ -1,0 +1,28 @@
+def calcular_bmi(height, weight):
+    bmi=weight / ((height / 100.0) ** 2)
+    return bmi
+def main():
+    height=float(input("enter your height in cm "))
+    
+    weight=float(input("enter your weight in kg "))
+
+    bmi=calcular_bmi(height, weight)
+
+    print(f"Your bmi(boby mass index is {bmi:.2f} kg/m^2)")
+
+    if bmi<18.5:
+        print("You are under weight")
+    
+    elif 18.5<= bmi <=25:
+        print("You have a normal weight")
+        
+    elif 25< bmi <=29.9:
+        print("You are overweight")
+    
+    elif bmi>30:
+        print("You have obesity")
+
+
+
+if __name__ == "__main__":
+    main()
