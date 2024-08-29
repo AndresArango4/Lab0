@@ -1,0 +1,66 @@
+// Include header file for prototypes of scanf and printf
+#include <stdio.h>
+
+// Prototype of calcBmi function
+float calcBmi(float h,float w);
+
+// Main function - entry point
+int main(){
+    // Local variable declaration
+    int personas;
+
+   printf("Enter the number of people");
+    scanf("%d", &personas);
+
+   float height[personas];
+   float weight[personas];
+   float bmi[personas];
+
+   for (int i = 0; i < personas; i++)
+  {
+    
+    printf("Enter the height of person %d in cm: ", i+1);
+    scanf("%f", &height[i]);
+
+     printf("Enter the weight of person %d in cm: ", i+1);
+    scanf("%f", &weight[i]);
+
+    bmi[i]= calcBmi(height[i],weight[i]);
+    
+}
+
+    for(int i=0; i<personas;i++)
+    {
+        printf("\nPerson %d:\nheight: %.3f \nweight: %.3f \nbmi: %.3f", i+1,height[i],weight[i],bmi[i]);
+
+
+         if (bmi[i]<18.5)
+    {
+        printf("\nPerson is underweight\n");
+    }
+    else if (bmi[i]>=18.5 && bmi[i]<=25)
+    {
+        printf("\nPerson have a normal weight\n");
+    }
+    else if (bmi[i]>25 && bmi[i]<=29.9)
+    {
+        printf("\nPerson is overweight\n");
+    }
+     else if (bmi[i]>30)
+    {
+        printf("\nPerson have obesity\n");
+         
+    }
+    
+}
+return 0;
+}
+
+// Implementation of calcBmi function
+float calcBmi(float h,float w){
+    float bmi;
+
+    // Compute body mass index
+    bmi=w/((h/100.0)*(h/100.0));
+    return bmi;  
+}
