@@ -1,0 +1,50 @@
+#include <stdio.h>
+
+float calcBmi(float h, float w);
+void calcIdealWeight(float h, float *minWeight, float *maxWeight);
+
+int main(){
+
+    float height;
+    float weight;
+    float bmi;
+    float minWeight, maxWeight;
+
+    printf("Enter your height in cms: ");
+    scanf("%f", &height);
+
+    
+    printf("Enter your weight in kgs: ");
+    scanf("%f", &weight);
+
+    bmi = calcBmi(height, weight);
+
+    printf("Your body mass index is %f kg/m^2\n", bmi);
+    if (bmi < 18.5) {
+        printf("You are underweight.\n");
+    } else if (bmi >= 18.5 && bmi <= 24.9) {
+        printf("You have a normal weight.\n");
+    } else if (bmi >= 25 && bmi <= 29.9) {
+        printf("You are overweight.\n");
+    } else if (bmi >= 30) {
+        printf("You have obesity.\n");
+    }
+
+    calcIdealWeight(height, &minWeight, &maxWeight);
+    printf("Your ideal weight should be between %.2f kg and %.2f kg to have a normal BMI.\n", minWeight, maxWeight);
+
+    return 0;
+}
+
+float calcBmi(float h, float w){
+float bmi;
+
+    bmi=w/((h/100.0)*(h/100.0));
+    return bmi;
+}
+
+void calcIdealWeight(float h, float *minWeight, float *maxWeight){
+    float heightInMeters = h / 100.0;
+    *minWeight = 18.5 * (heightInMeters * heightInMeters);
+    *maxWeight = 24.9 * (heightInMeters * heightInMeters);
+}
