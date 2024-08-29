@@ -1,0 +1,28 @@
+def calcular_bmi(height, weight):
+    bmi=weight / ((height / 100.0) ** 2)
+    return bmi
+
+def main():
+
+    personas=int(input("Enter the number of people:"))
+    height=[0.0]*personas
+    weight=[0.0]*personas
+    bmi=[0.0]*personas
+    for i in range(personas):
+        height[i]=float(input(f"Enter the height of person {i+1} in cm:"))
+        weight[i]=float(input(f"Enter the weight of person {i+1} in kg:"))
+        bmi[i]=calcular_bmi(height[i],weight[i])
+
+    for i in range(personas):
+        print(f"\nPerson {i+1}:\nheight:{height[i]}\nweight:{weight[i]}\nbmi:{bmi[i]}")
+        if bmi[i]<18.5:
+            print("You are under weight\n")
+        elif 18.5<= bmi[i] <=25:
+            print("You have a normal weight\n")
+        elif 25< bmi[i] <=29.9:
+            print("You are overweight\n")
+        elif bmi[i]>30:
+            print("You have obesity\n")
+
+if __name__ == "__main__":
+    main()
