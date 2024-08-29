@@ -1,0 +1,31 @@
+def calc_bmi(height, weight):
+    return weight / ((height / 100) ** 2)
+
+def calc_ideal_weight(height):
+    height_in_meters = height / 100
+    min_weight = 18.5 * (height_in_meters ** 2)
+    max_weight = 24.9 * (height_in_meters ** 2)
+    return min_weight, max_weight
+
+def main():
+    height = float(input("Enter your height in cm: "))
+
+    weight = float(input("Enter your weight in kg: "))
+
+    bmi = calc_bmi(height, weight)
+
+    print(f"Your body mass index is {bmi:.2f} kg/m^2")
+    if bmi < 18.5:
+        print("You are underweight.")
+    elif 18.5 <= bmi <= 24.9:
+        print("You have a normal weight.")
+    elif 25 <= bmi <= 29.9:
+        print("You are overweight.")
+    else:
+        print("You have obesity.")
+
+    min_weight, max_weight = calc_ideal_weight(height)
+    print(f"Your ideal weight should be between {min_weight:.2f} kg and {max_weight:.2f} kg to have a normal BMI.")
+
+if __name__ == "__main__":
+    main()
